@@ -1,6 +1,6 @@
 import streamlit as st
 
-"""Project - Heart Study"""
+"""# Project - Heart Study"""
 
 
 import numpy as np
@@ -28,20 +28,13 @@ data.hist(figsize=(20,20))
 
 """More specifically, for our research questions:"""
 
-"""LDLC levels"""
-fig, ax = plt.subplots()
-ax.hist(data.LDLC);
+
+selected_variable1 = st.selectbox('Which variable do you want to visualize:', ['LDLC', 'HDLC','TOTCHOL'])
+st.write(f'### {selected_variable1} levels')
+fig,ax = plt.subplots (figsize= (10,8))
+ax.hist(x=data[selected_variable1])
 st.pyplot(fig)
 
-"""HDLC levels"""
-fig, ax = plt.subplots()
-ax.hist(data.HDLC);
-st.pyplot(fig)
-
-"""TOTCHOL levels"""
-fig, ax = plt.subplots()
-ax.hist(data.TOTCHOL)
-st.pyplot(fig)
 
 
 """# Handling missing values
@@ -88,7 +81,6 @@ st.write(final_dataset.describe())
 """ # Correlations"""
 
 selected_variable = st.selectbox('select which variable you want to see correlated to CVD:', ['LDLC', 'HDLC','TOTCHOL'])
-st.write(f"### Distribution of {selected_variable}" )
 st.write(f'### Correlation between {selected_variable} and CVD')
 fig,axes = plt.subplots (figsize= (10,8))
 sns.regplot(x=final_dataset[selected_variable], y= final_dataset['CVD']);
