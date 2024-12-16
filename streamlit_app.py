@@ -10,11 +10,15 @@ import seaborn as sns
 from sklearn import datasets
 plt.style.use('ggplot')
 
+"""Our research question: Are LDL, HDL and total cholesterol levels linked to getting diagnosed with CVD?"""
+
 """# Our Dataset"""
 
 data=pd.read_csv('https://raw.githubusercontent.com/LUCE-Blockchain/Databases-for-teaching/refs/heads/main/Framingham%20Dataset.csv')
 
 data
+
+"""We followed with looking at the statistics of the data:"""
 
 st.write(data.describe())
 
@@ -38,14 +42,19 @@ st.pyplot(fig)
 
 
 """# Handling missing values
-There are a lot of missing values in variables: TOTCHOL, CIGPDAY, BMI, BPMEDS, HEARTRATE, GLUCOSE, educ, HDLC and LDLC
-Since we want to examine HDLC, LDLC and TOTCHOL, we need to remove the patients with missing values in order to start our analysis.
+There are a lot of missing values in variables: TOTCHOL, CIGPDAY, BMI, BPMEDS, HEARTRATE, GLUCOSE, educ, HDLC and LDLC.
+Since we want to examine HDLC, LDLC and TOTCHOL, we need to handle these missing values before proceeding with the analysis.
 """
 
 data.loc[:, ['LDLC', 'HDLC', 'TOTCHOL']]
 
 data_CHOL = data.dropna(subset = ['LDLC', 'HDLC', 'TOTCHOL'] )
 data_CHOL.describe()
+
+"""In this table you can see that there are quite a few LDLC and HDLC missing values (8600), this is due to the fact that the values were only measured in period 3. (Explain periods) 
+
+The TOTCHOL outliers were only 409 and were not related to any periods, thus we decided to impute using the KNN imputer (5 neighbors)
+"""
 
 """# Outliers"""
 fig, ax = plt.subplots()
@@ -87,94 +96,17 @@ sns.regplot(x=final_dataset[selected_variable], y= final_dataset['CVD']);
 st.pyplot(fig)
 
 
+"""# Models"""
+
+"""Which ones we tried: outcomes..."""
+
+"""# Conlcusion"""
+"""In conclusion we can see that these variables ..."""
 
 
 
 
-tree_data = final_dataset[['LDLC', 'HDLC', 'CVD']]
-X,y = final_dataset[['LDLC', 'HDLC']], final_dataset[['CVD']]
 
 
 
 
-# step 1: train-test split
-from sklearn.model_selection import train_test_split
-
-train_X, test_X, train_y, test_y = train_test_split(X, y,
-                                                    test_size=0.20,
-                                                    stratify=y,
-                                                    random_state=25)
-
-# step 2: pic the algorithm
-from sklearn import tree
-clf_1 = tree.DecisionTreeClassifier(random_state=42, max_depth= 4)
-
-clf_1 = clf_1.fit(train_X, train_y)
-
-plt.figure(figsize=(16,10))
-tree.plot_tree(clf_1);
-
-# step 3: train the algorithm
-prediction = clf_1.predict(test_X)
-
-print("Original Labels", test_y.values)
-print("Labels Predicted", prediction)
-
-
-# step 4: prediction
-
-# Step 5: Evaluate the prediction
-from sklearn.metrics import classification_report
-print(classification_report(y_true=test_y, y_pred=prediction))
-
-# confusion matrix
-
-# step 1: train-test split
-from sklearn.model_selection import train_test_split
-
-train_X, test_X, train_y, test_y = train_test_split(X, y,
-                                                    test_size=0.20,
-                                                    stratify=y,
-                                                    random_state=25)
-
-# step 2: pic the algorithm
-from sklearn import tree
-clf_1 = tree.DecisionTreeClassifier(random_state=42, max_depth= 4)
-
-clf_1 = clf_1.fit(train_X, train_y)
-
-plt.figure(figsize=(16,10))
-tree.plot_tree(clf_1);
-
-
-# step 3: train the algorithm
-prediction = clf_1.predict(test_X)
-
-print("Original Labels", test_y.values)
-print("Labels Predicted", prediction)
-
-
-# step 4: prediction
-
-# Step 5: Evaluate the prediction
-from sklearn.metrics import classification_report
-print(classification_report(y_true=test_y, y_pred=prediction))
-
-# confusion matrix
-
-from sklearn.metrics import accuracy_score
-
-accuracy_score(y_true=test_y, y_pred=prediction)
-
-from sklearn.metrics import confusion_matrix
-
-cm = confusion_matrix(y_true=test_y,
-                 y_pred=prediction)
-cm
-
-from sklearn.metrics import ConfusionMatrixDisplay
-
-disp = ConfusionMatrixDisplay(confusion_matrix=cm,
-                              display_labels=clf_1.classes_)
-
-disp.plot();
