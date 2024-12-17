@@ -1,6 +1,6 @@
 import streamlit as st
 
-"""# Project 2 - More Extended Heart Study"""
+"""# Project 2 - Extended Heart Study"""
 
 
 import numpy as np
