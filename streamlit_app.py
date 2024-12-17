@@ -46,7 +46,7 @@ There are a lot of missing values in variables: TOTCHOL, CIGPDAY, BMI, BPMEDS, H
 Since we want to examine HDLC, LDLC and TOTCHOL, we need to handle these missing values before proceeding with the analysis.
 """
 
-data.loc[:, ['LDLC', 'HDLC']])
+data.loc[:, ['LDLC', 'HDLC']]
 
 data_CHOL = data.dropna(subset = ['LDLC', 'HDLC'] )
 data_CHOL.describe()
