@@ -146,7 +146,7 @@ print(classification_report(y_test, y_pred_log))
 
 # Display confusion matrix
 ConfusionMatrixDisplay.from_estimator(logistic_model, X_test, y_test)
-plt.title("Logistic Regression Confusion Matrix"
+plt.title("Logistic Regression Confusion Matrix")
 plt.show()
 
 st.title("Logistic Regression Confusion Matrix")
