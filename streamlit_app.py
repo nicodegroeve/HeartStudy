@@ -176,11 +176,11 @@ ConfusionMatrixDisplay.from_estimator(random_forest_model, X_test, y_test)
 plt.title("Random Forest Confusion Matrix")
 plt.show()
 
-st.title("Logistic Regression Confusion Matrix")
+st.title("Random Forest Confusion Matrix")
 
 fig, ax = plt.subplots()
-ConfusionMatrixDisplay.from_estimator(logistic_model, X_test, y_test, ax=ax)
-ax.set_title("Logistic Regression Confusion Matrix")
+ConfusionMatrixDisplay.from_estimator(random_forest_model, X_test, y_test, ax=ax)
+ax.set_title("Random Forest Confusion Matrix")
 
 st.pyplot(fig)
 
@@ -202,11 +202,11 @@ ConfusionMatrixDisplay.from_estimator(svm_model, X_test, y_test)
 plt.title("SVM Confusion Matrix")
 plt.show()
 
-st.title("Logistic Regression Confusion Matrix")
+st.title("Support Vector Machine Confusion Matrix")
 
 fig, ax = plt.subplots()
-ConfusionMatrixDisplay.from_estimator(logistic_model, X_test, y_test, ax=ax)
-ax.set_title("Logistic Regression Confusion Matrix")
+ConfusionMatrixDisplay.from_estimator(svm_model, X_test, y_test, ax=ax)
+ax.set_title("Support Vector Machine Confusion Matrix")
 
 st.pyplot(fig)
 
