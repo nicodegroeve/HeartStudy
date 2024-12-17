@@ -46,7 +46,7 @@ There are a lot of missing values in variables: TOTCHOL, CIGPDAY, BMI, BPMEDS, H
 Since we want to examine HDLC, LDLC and TOTCHOL, we need to handle these missing values before proceeding with the analysis.
 """
 
-data.loc[:, ['LDLC', 'HDLC']]
+data.loc[:, ['LDLC', 'HDLC']])
 
 data_CHOL = data.dropna(subset = ['LDLC', 'HDLC'] )
 data_CHOL.describe()
@@ -62,10 +62,10 @@ data.loc[:, 'TOTCHOL'] = TOTCHOL_imputed
 The TOTCHOL outliers were only 409 and were not related to any periods, thus we decided to impute using the KNN imputer (5 neighbors)
 """
 
-data.PERIOD.value_counts()
+st.write(data.PERIOD.value_counts())
 
 show_missing_values = ['LDLC','HDLC','TOTCHOL'] 
-data_CHOL[show_missing_values].isnull().sum()
+st.write(data_CHOL[show_missing_values].isnull().sum())
 
 """# Outliers"""
 fig, ax = plt.subplots()
@@ -147,9 +147,9 @@ print(classification_report(y_test, y_pred_log))
 # Display confusion matrix
 ConfusionMatrixDisplay.from_estimator(logistic_model, X_test, y_test)
 plt.title("Logistic Regression Confusion Matrix")
-plt.show()
+st.plt.show()
 
-"""Accuracy = 0.75"""
+"""F1-score = 0.75"""
 
 
 """Random forest: """
@@ -166,9 +166,9 @@ print(classification_report(y_test, y_pred_rf))
 # Display confusion matrix for Random Forest
 ConfusionMatrixDisplay.from_estimator(random_forest_model, X_test, y_test)
 plt.title("Random Forest Confusion Matrix")
-plt.show()
+st.plt.show()
 
-"""Accuracy = 0.73"""
+"""F1-score = 0.73"""
 
 """Support Vector Machine: """
 
@@ -184,12 +184,12 @@ print(classification_report(y_test, y_pred_svm))
 # Display confusion matrix for SVM
 ConfusionMatrixDisplay.from_estimator(svm_model, X_test, y_test)
 plt.title("SVM Confusion Matrix")
-plt.show()
+st.plt.show()
 
-"""Accuracy = 0.75"""
+"""F1-score = 0.75"""
 
 """# Conlcusion"""
-"""In conclusion we can see that these variables ..."""
+"""In conclusion we can see that these variables are not highly correlated to CVD and thus will also not make good features to predict the presence of CVD. From the F1-scores we see that this is true and that these models can not accuratly predict CVD from LDLC, HDLC and total cholesterol levels. """
 
 
 
