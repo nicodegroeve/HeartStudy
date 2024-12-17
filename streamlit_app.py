@@ -1,6 +1,6 @@
 import streamlit as st
 
-"""# Project 2 - Extended Heart Study"""
+"""# Project 2 - Heart Study"""
 
 
 import numpy as np
@@ -66,7 +66,7 @@ The TOTCHOL outliers were only 409 and were not related to any periods, thus we 
 
 st.write(data.PERIOD.value_counts())
 
-"""After handeling the missing values:"""
+"""Missing values after handeling them for our features:"""
 
 show_missing_values = ['LDLC','HDLC','TOTCHOL'] 
 st.write(data_CHOL[show_missing_values].isnull().sum())
@@ -164,9 +164,9 @@ ax.set_title("Logistic Regression Confusion Matrix")
 
 st.pyplot(fig)
 
-"""Accuracy = 0.75
+"""Accuracy = 0.75"""
 
-AUC-score = 0.54"""
+"""AUC-score = 0.54"""
 
 
 """Random forest: """
@@ -193,9 +193,9 @@ ax.set_title("Random Forest Confusion Matrix")
 
 st.pyplot(fig)
 
-"""Accuracy = 0.73
+"""Accuracy = 0.73"""
 
-AUC score = 0.51"""
+"""AUC score = 0.51"""
 
 """Support Vector Machine: """
 
@@ -221,9 +221,9 @@ ax.set_title("Support Vector Machine Confusion Matrix")
 
 st.pyplot(fig)
 
-"""Accuracy = 0.75
+"""Accuracy = 0.75"""
 
-AUC-score = 0.51"""
+"""AUC-score = 0.51"""
 
 
 
