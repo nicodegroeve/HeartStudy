@@ -1,6 +1,6 @@
 import streamlit as st
 
-"""# Project - Heart Study"""
+"""# Project 2 - More Extended Heart Study"""
 
 
 import numpy as np
@@ -157,7 +157,7 @@ ax.set_title("Logistic Regression Confusion Matrix")
 
 st.pyplot(fig)
 
-"""F1-score = 0.75"""
+"""Accuracy = 0.75"""
 
 
 """Random forest: """
@@ -184,7 +184,7 @@ ax.set_title("Random Forest Confusion Matrix")
 
 st.pyplot(fig)
 
-"""F1-score = 0.73"""
+"""Accuracy = 0.73"""
 
 """Support Vector Machine: """
 
@@ -210,10 +210,10 @@ ax.set_title("Support Vector Machine Confusion Matrix")
 
 st.pyplot(fig)
 
-"""F1-score = 0.75"""
+"""Accuracy = 0.75"""
 
 """# Conlcusion"""
-"""In conclusion we can see that these variables are not highly correlated to CVD and thus will also not make good features to predict the presence of CVD. From the F1-scores we see that this is true and that these models can not accuratly predict CVD from LDLC, HDLC and total cholesterol levels. """
+"""In conclusion we can see that these variables are not highly correlated to CVD and thus will also not make good features to predict the presence of CVD. From the accuracy scores we see that this is true and that these models can not accuratly predict CVD from LDLC, HDLC and total cholesterol levels. """
 
 
 
