@@ -146,8 +146,16 @@ print(classification_report(y_test, y_pred_log))
 
 # Display confusion matrix
 ConfusionMatrixDisplay.from_estimator(logistic_model, X_test, y_test)
-plt.title("Logistic Regression Confusion Matrix")
-st.plt.show()
+plt.title("Logistic Regression Confusion Matrix"
+plt.show()
+
+st.title("Logistic Regression Confusion Matrix")
+
+fig, ax = plt.subplots()
+ConfusionMatrixDisplay.from_estimator(logistic_model, X_test, y_test, ax=ax)
+ax.set_title("Logistic Regression Confusion Matrix")
+
+st.pyplot(fig)
 
 """F1-score = 0.75"""
 
@@ -166,7 +174,15 @@ print(classification_report(y_test, y_pred_rf))
 # Display confusion matrix for Random Forest
 ConfusionMatrixDisplay.from_estimator(random_forest_model, X_test, y_test)
 plt.title("Random Forest Confusion Matrix")
-st.plt.show()
+plt.show()
+
+st.title("Logistic Regression Confusion Matrix")
+
+fig, ax = plt.subplots()
+ConfusionMatrixDisplay.from_estimator(logistic_model, X_test, y_test, ax=ax)
+ax.set_title("Logistic Regression Confusion Matrix")
+
+st.pyplot(fig)
 
 """F1-score = 0.73"""
 
@@ -184,7 +200,15 @@ print(classification_report(y_test, y_pred_svm))
 # Display confusion matrix for SVM
 ConfusionMatrixDisplay.from_estimator(svm_model, X_test, y_test)
 plt.title("SVM Confusion Matrix")
-st.plt.show()
+plt.show()
+
+st.title("Logistic Regression Confusion Matrix")
+
+fig, ax = plt.subplots()
+ConfusionMatrixDisplay.from_estimator(logistic_model, X_test, y_test, ax=ax)
+ax.set_title("Logistic Regression Confusion Matrix")
+
+st.pyplot(fig)
 
 """F1-score = 0.75"""
 
