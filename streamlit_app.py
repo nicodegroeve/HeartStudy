@@ -84,6 +84,7 @@ st.pyplot(fig)
 
 """There are some outliers in variables: LDLC and HDLC. In order to continue with our data analysis, we need to correct these."""
 
+
 """Statistics of our final dataset"""
 data_CHOL = data_CHOL.loc[(data_CHOL.HDLC<125), ]
 final_dataset = data_CHOL.loc[:, ['HDLC','LDLC', 'TOTCHOL', 'CVD']]
@@ -218,7 +219,9 @@ st.pyplot(fig)
 
 
 """# Conlcusion"""
-"""In conclusion we can see that these variables are not highly correlated to CVD and thus will also not make good features to predict the presence of CVD. From the accuracy scores we see that this is true and that these models can not accuratly predict CVD from LDLC, HDLC and total cholesterol levels. """
+"""In conclusion we can see that these variables are not highly correlated to CVD and thus will also not make good features to predict the presence of CVD. From the accuracy scores we see that this is true and that these models can not accuratly predict CVD from LDLC, HDLC and total cholesterol levels. 
+
+Our best model is the random forest one, it has slightly lower accuracy, but the True negatives and False negatives are slightly better then the other models """
 
 
 
