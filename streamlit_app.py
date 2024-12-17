@@ -84,25 +84,6 @@ st.pyplot(fig)
 
 """There are some outliers in variables: LDLC and HDLC. In order to continue with our data analysis, we need to correct these."""
 
-import streamlit as st
-import matplotlib.pyplot as plt
-
-# Data for the pie chart
-slices = [17, 7]
-activities = ['CVD', 'NO CVD']
-cols = ['c', 'b']
-
-# Streamlit app title
-st.title("Pie Chart Visualization")
-
-# Create the pie chart
-fig, ax = plt.subplots()
-ax.pie(slices, labels=activities, colors=cols, startangle=90, shadow=True, autopct='%1.1f%%')
-ax.set_title('Pie Plot')
-
-# Display the pie chart in the Streamlit app
-st.pyplot(fig)
-
 """Statistics of our final dataset"""
 data_CHOL = data_CHOL.loc[(data_CHOL.HDLC<125), ]
 final_dataset = data_CHOL.loc[:, ['HDLC','LDLC', 'TOTCHOL', 'CVD']]
@@ -233,46 +214,8 @@ st.pyplot(fig)
 
 """Accuracy = 0.75"""
 
-import streamlit as st
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-import shap
 
-# Load your dataset (replace ⁠ final_dataset ⁠ with an actual dataset file or source)
-# Example: final_dataset = pd.read_csv('your_dataset.csv')
-st.title("SHAP Summary Plot for Logistic Regression")
 
-# Simulating a dataset example (remove if loading your dataset)
-final_dataset = pd.DataFrame({
-    'HDLC': [60, 55, 45, 70, 65, 50, 80],
-    'LDLC': [110, 120, 115, 130, 125, 140, 135],
-    'TOTCHOL': [170, 175, 160, 180, 185, 200, 195],
-    'CVD': [0, 1, 0, 1, 0, 1, 0]
-})
-
-# Define features and target
-X = final_dataset[['HDLC', 'LDLC', 'TOTCHOL']]
-y = final_dataset['CVD']
-
-# Split data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# Train the Logistic Regression model
-model = LogisticRegression(max_iter=1000)
-model.fit(X_train, y_train)
-
-# SHAP explanation
-explainer = shap.Explainer(model, X_train)
-shap_values = explainer(X_test)
-
-# Streamlit visualization
-st.subheader("SHAP Summary Plot")
-
-# Display SHAP summary plot using Streamlit
-with st.spinner("Generating SHAP plot..."):
-    shap_plot = shap.summary_plot(shap_values, X_test, feature_names=['HDLC', 'LDLC', 'TOTCHOL'], show=False)
-    st.pyplot(bbox_inches='tight')
 
 """# Conlcusion"""
 """In conclusion we can see that these variables are not highly correlated to CVD and thus will also not make good features to predict the presence of CVD. From the accuracy scores we see that this is true and that these models can not accuratly predict CVD from LDLC, HDLC and total cholesterol levels. """
