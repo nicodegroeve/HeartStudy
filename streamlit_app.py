@@ -114,7 +114,79 @@ Finally, for the total cholesterol there is a very slight positive correlation.
 
 """# Models"""
 
-"""Which ones we tried: outcomes..."""
+"""Logistic Regression:"""
+
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+from sklearn.metrics import classification_report, accuracy_score
+
+# Fill missing values
+data = data.fillna(0)
+
+# Define features (X) and target (y)
+X = data[['LDLC', 'HDLC']]  # Replace with appropriate feature columns
+y = data['CVD']  # Replace with appropriate target column
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Logistic Regression
+logistic_model = LogisticRegression(max_iter=1000)
+logistic_model.fit(X_train, y_train)
+y_pred_log = logistic_model.predict(X_test)
+
+# Evaluate the model
+print("\nLogistic Regression Accuracy:", accuracy_score(y_test, y_pred_log))
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred_log))
+
+# Display confusion matrix
+ConfusionMatrixDisplay.from_estimator(logistic_model, X_test, y_test)
+plt.title("Logistic Regression Confusion Matrix")
+plt.show()
+
+"""Accuracy = 0.75"""
+
+
+"""Random forest: """
+
+random_forest_model = RandomForestClassifier(random_state=42)
+random_forest_model.fit(X_train, y_train)
+y_pred_rf = random_forest_model.predict(X_test)
+
+# Evaluate the Random Forest model
+print("\nRandom Forest Accuracy:", accuracy_score(y_test, y_pred_rf))
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred_rf))
+
+# Display confusion matrix for Random Forest
+ConfusionMatrixDisplay.from_estimator(random_forest_model, X_test, y_test)
+plt.title("Random Forest Confusion Matrix")
+plt.show()
+
+"""Accuracy = 0.73"""
+
+"""Support Vector Machine: """
+
+svm_model = SVC(kernel='linear', random_state=42)
+svm_model.fit(X_train, y_train)
+y_pred_svm = svm_model.predict(X_test)
+
+# Evaluate the SVM model
+print("\nSupport Vector Machine Accuracy:", accuracy_score(y_test, y_pred_svm))
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred_svm))
+
+# Display confusion matrix for SVM
+ConfusionMatrixDisplay.from_estimator(svm_model, X_test, y_test)
+plt.title("SVM Confusion Matrix")
+plt.show()
+
+"""Accuracy = 0.75"""
 
 """# Conlcusion"""
 """In conclusion we can see that these variables ..."""
