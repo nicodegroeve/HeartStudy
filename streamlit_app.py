@@ -62,7 +62,11 @@ data.loc[:, 'TOTCHOL'] = TOTCHOL_imputed
 The TOTCHOL outliers were only 409 and were not related to any periods, thus we decided to impute using the KNN imputer (5 neighbors)
 """
 
+"""Distribution of patients in the 3 periods: """
+
 st.write(data.PERIOD.value_counts())
+
+"""After handeling the missing values:"""
 
 show_missing_values = ['LDLC','HDLC','TOTCHOL'] 
 st.write(data_CHOL[show_missing_values].isnull().sum())
