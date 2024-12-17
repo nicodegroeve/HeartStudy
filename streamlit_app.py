@@ -160,7 +160,9 @@ ax.set_title("Logistic Regression Confusion Matrix")
 
 st.pyplot(fig)
 
-"""Accuracy = 0.75"""
+"""Accuracy = 0.75
+
+AUC-score = 0.54"""
 
 
 """Random forest: """
@@ -187,7 +189,9 @@ ax.set_title("Random Forest Confusion Matrix")
 
 st.pyplot(fig)
 
-"""Accuracy = 0.73"""
+"""Accuracy = 0.73
+
+AUC score = 0.51"""
 
 """Support Vector Machine: """
 
@@ -213,7 +217,9 @@ ax.set_title("Support Vector Machine Confusion Matrix")
 
 st.pyplot(fig)
 
-"""Accuracy = 0.75"""
+"""Accuracy = 0.75
+
+AUC-score = 0.51"""
 
 
 
