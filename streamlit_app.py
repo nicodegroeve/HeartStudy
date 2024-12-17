@@ -1,6 +1,6 @@
 import streamlit as st
 
-"""# Project 2 - Heart Study"""
+"""# Project 2: Heart Study"""
 
 
 import numpy as np
@@ -62,11 +62,11 @@ data.loc[:, 'TOTCHOL'] = TOTCHOL_imputed
 The TOTCHOL outliers were only 409 and were not related to any periods, thus we decided to impute using the KNN imputer (5 neighbors)
 """
 
-"""Distribution of patients in the 3 periods: """
+"""Distribution of patient over the 3 periods: """
 
 st.write(data.PERIOD.value_counts())
 
-"""Missing values after handeling them for our features:"""
+"""The missing values after handeling them:"""
 
 show_missing_values = ['LDLC','HDLC','TOTCHOL'] 
 st.write(data_CHOL[show_missing_values].isnull().sum())
@@ -195,7 +195,7 @@ st.pyplot(fig)
 
 """Accuracy = 0.73"""
 
-"""AUC score = 0.51"""
+"""AUC-score = 0.51"""
 
 """Support Vector Machine: """
 
